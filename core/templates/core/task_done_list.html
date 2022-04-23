@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %} Total Task Page{% endblock title %}
+
+
+{% block content %}
+
+    <div class="header-bar">
+        <div style="padding: 5px 20px;">
+            <h1>Hello {{request.user|title}}</h1>
+            <h4>You have <b><i>{{complete_count}} completed task{{complete_count|pluralize:'s'}} in this week.</i></b> </h4>
+        </div>
+
+        <a href="{% url 'task-list' %}">
+            <div class="header-bar">
+                <p class="header-title">&#8592; Back</p>
+            </div>
+        </a>
+        
+    </div>
+
+    <div class="inner">
+        <table style="width: 100%">
+            <tr class="task-wrapper task-title">
+                <th>Status</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed On</th>
+                <th>Action</th>
+            </tr>
+
+            {% for task in tasks %}
+
+                <tr class="task-wrapper task-title">
+                    <td><div class="task-complete-icon"></div></td>
+
+                    <td><i><b><s class="prettier">{{task}}</s></b></i></td>
+                    {% if task.description %}
+                        <td><i class="prettier">{{task.description}}</i></td>
+                    {% else %}
+                        <td><i class="prettier">-</i></td>
+                    {% endif %}
+                    <td><i class="prettier">{{task.created_on}}</i></td>
+                    <td><a class="delete-link" style="color: #cf4949" href="{% url 'task-delete' task.id %}">&#215;</a></td>
+                </tr>
+                
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+{% endblock %}

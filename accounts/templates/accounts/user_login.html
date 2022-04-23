@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block title %} Login Page{% endblock title %}
+
+
+{% block content %}
+
+    <a href="{% url 'task-list' %}">
+        <div class="header-bar">
+            <h2 class="text-center py-2">Login</h2>
+        </div>
+    </a>
+
+    <div class="card-body py-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="button" type="submit" value="Login">
+        </form>
+        
+        <p>Don't have an account? <a href="{% url 'user-signup' %}">Signup</a></p>
+    
+    </div>
+
+{% endblock content %}

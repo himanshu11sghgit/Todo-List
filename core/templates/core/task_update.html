@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %} Task Update Page{% endblock title %}
+
+
+{% block content %}
+
+    <a href="{% url 'task-list' %}">
+        <div class="header-bar">
+            <p class="header-title">&#8592; Back</p>
+        </div>
+    </a>
+
+    <div class="inner">
+        <h2>Task Update Page</h2>
+        <p><a href="{% url 'task-list' %}">Back to page</a></p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="button" type="submit" value="Save">
+
+        </form>
+    </div>
+
+{% endblock content %}

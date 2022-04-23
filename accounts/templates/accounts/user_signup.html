@@ -1,0 +1,36 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block title %} Signup Page{% endblock title %}
+
+
+{% block content %}
+
+
+    <a href="{% url 'task-list' %}">
+        <div class="header-bar">
+            <h2 class="text-center py-2">Signup</h2>
+        </div>
+    </a>
+
+    <div class="card-body py-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>{{form.username.label}}:</label>
+            {{form.username}}
+            <label>{{form.password1.label}}:</label>
+            {{form.password1}}
+            <label>{{form.password2.label}}:</label>
+            {{form.password2}}
+
+            <br>
+            <br>
+            <input class="button" type="submit" value="Sign Up">
+        </form>
+
+        <p>Already have an account? <a href="{% url 'user-login' %}">Login</a></p>
+
+    </div>
+
+
+{% endblock content %}
